@@ -1,5 +1,6 @@
+import '@styles/globals.css';
 export async function generateMetadata({params}) {
-    const response = await fetch("/api/film/" + params.slug)
+    const response = await fetch(process.env.APP_URL + "/api/film/" + params.slug)
     const film = await response.json()
     return {
         title: film.code + " - " + film.name,
@@ -8,7 +9,7 @@ export async function generateMetadata({params}) {
 }
 const FilmLayout = ({children}) => {
     return (
-        <div>{children}</div>
+        <div className="w-full flex-center">{children}</div>
     )
 }
 
