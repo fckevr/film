@@ -1,15 +1,15 @@
 import '@styles/globals.css';
 import Provider from '@components/Provider';
-import ChatPageLayout from './(dashboard)/chat/layout';
+import SocketProvider from '@components/SocketProvider';
 
 const RootLayout = ({children}) => {
   return (
     <html lang="en">
       <body>
         <Provider>
-          <ChatPageLayout>
+          <SocketProvider>
             {children}
-          </ChatPageLayout>
+          </SocketProvider>
         </Provider>
       </body>
     </html>
