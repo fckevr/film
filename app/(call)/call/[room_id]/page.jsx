@@ -1,6 +1,6 @@
 "use client"
 import '@styles/globals.css';
-import ChatPageLayout, { SocketContext } from "@app/(dashboard)/chat/layout";
+import SocketProvider, {SocketContext} from '@components/SocketProvider';
 import Image from "next/image";
 import { useParams, useSearchParams } from "next/navigation";
 import { useContext, useEffect, useRef, useState } from "react";
@@ -179,7 +179,7 @@ const CallPage = () => {
                 <h1 className='text-white flex-center text-lg p-5'>Cuộc gọi đã kết thúc</h1>
             </div>
         ) : (
-        <ChatPageLayout>
+        <SocketProvider>
             <div className="dark-100 min-h-screen">
                 <div className="fixed top-0 left-0 min-w-full min-h-full">
                     <video
@@ -222,7 +222,7 @@ const CallPage = () => {
                     />   
                 </div>
             </div>
-        </ChatPageLayout>
+        </SocketProvider>
         )
     );
 }  
