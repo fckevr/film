@@ -1,8 +1,9 @@
 export async function generateMetadata({params}) {
-    const film = await fetch("/api/film/" + params.slug)
+    const response = await fetch("/api/film/" + params.slug)
+    const film = await response.json()
     return {
-        title: film.name,
-        description: film.description,
+        title: film.code + " - " + film.name,
+        description: film.code + " - " + film.description,
     }
 }
 const FilmLayout = ({children}) => {
