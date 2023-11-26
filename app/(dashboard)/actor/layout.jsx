@@ -1,4 +1,5 @@
 import '@styles/globals.css';
+import fetch from 'node-fetch';
 export async function generateMetadata() {
     const response = await fetch(process.env.APP_URL + "/api/actor/all", {
       cache: "no-cache",
