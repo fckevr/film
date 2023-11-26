@@ -1,7 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 async function getData() {
-    let response = await fetch(process.env.APP_URL + "/api/actor/all", {next: {revalidate: 3600}})
+    let response = await fetch(process.env.APP_URL + "/api/actor/all", {next: {revalidate: 3600}, headers: {'Access-Control-Allow-Origin': '*'}})
     if (response.ok) {
         const allActor = await response.json()
         const actorListByName = []
