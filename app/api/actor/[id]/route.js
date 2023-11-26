@@ -20,7 +20,7 @@ export const GET = async(request, {params}) => {
             }
         }
         if (actors) {
-            return new Response(JSON.stringify(actors), {status: 200, headers: {"Content-Type": "application/json", "Access-Control-Allow-Origin": "*"}})
+            return new Response(JSON.stringify(actors), {status: 200})
         }
         else {
             return new Response("Lỗi", {status: 500})
