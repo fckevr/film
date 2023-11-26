@@ -1,7 +1,8 @@
 import Image from "next/image"
 import Link from "next/link"
-
+import dns from 'dns'
 async function getData() {
+    dns.setDefaultResultOrder('ipv4first');
     let response = await fetch(process.env.APP_URL + "/api/actor/all", {next: {revalidate: 3600}})
     if (response.ok) {
         const allActor = await response.json()

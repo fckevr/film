@@ -1,5 +1,7 @@
 import '@styles/globals.css';
+import dns from 'dns'
 export async function generateMetadata() {
+    dns.setDefaultResultOrder('ipv4first');
     const response = await fetch(process.env.APP_URL + "/api/actor/all", {
       cache: "no-cache",
     })
