@@ -31,7 +31,8 @@ async function getData() {
 
 async function ActorList() {
     try {
-        const actorListByName = await getData()
+        let actorListByName = []
+        actorListByName = await getData()
         return (
             <section className="w-full min-h-screen md:w-10/12 flex lg:gap-10 mt-10 relative">
                 <div className="w-full dark-200 shadow-2xl rounded-2xl px-6 py-3">
