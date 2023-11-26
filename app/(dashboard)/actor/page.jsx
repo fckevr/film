@@ -1,5 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
+import fetch from "node-fetch"
 
 async function getData() {
     let response = await fetch(process.env.APP_URL + "/api/actor/all", {next: {revalidate: 3600}})
