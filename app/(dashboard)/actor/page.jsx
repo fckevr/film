@@ -2,7 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 
 async function getData() {
-    let response = await fetch(process.env.APP_URL + "/api/actor/all", {next: {revalidate: 3600}, cache: "no-cache"})
+    let response = await fetch(process.env.APP_URL + "/api/actor/all", {next: {revalidate: 3600}})
     if (response.ok) {
         const allActor = await response.json()
         const actorListByName = []
@@ -29,7 +29,7 @@ async function getData() {
     }
 }
 
-export default async function ActorList() {
+async function ActorList() {
     try {
         const actorListByName = await getData()
         return (
@@ -66,3 +66,5 @@ export default async function ActorList() {
         return null
     }
 }
+
+export default ActorList
