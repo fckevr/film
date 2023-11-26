@@ -3,27 +3,28 @@ import Link from "next/link"
 
 async function getData() {
     let response = await fetch(process.env.APP_URL + "/api/actor/all", {next: {revalidate: 3600}})
-    const allActor = await response.json()
-    const actorListByName = []
-    let subList = []
-    let currentLetter = '0'
-    allActor.map((actor, index) => {
-        if (actor.name[0] != currentLetter) {
-            currentLetter = actor.name[0]
-            if (subList.length > 0) {
+    if (response.ok) {
+        const allActor = await response.json()
+        const actorListByName = []
+        let subList = []
+        let currentLetter = '0'
+        allActor.map((actor, index) => {
+            if (actor.name[0] != currentLetter) {
+                currentLetter = actor.name[0]
+                if (subList.length > 0) {
+                    actorListByName.push(subList)
+                    subList = []
+                }
+            }
+            subList.push(actor)
+            if (index == allActor.length - 1) {
                 actorListByName.push(subList)
                 subList = []
             }
-        }
-        subList.push(actor)
-        if (index == allActor.length - 1) {
-            actorListByName.push(subList)
-            subList = []
-        }
-    })
-    if (actorListByName) {
-        return actorListByName
-    } else {
+        })
+            return actorListByName
+    }
+    else {
         throw new Error("Error")
     }
 }
