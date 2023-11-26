@@ -22,7 +22,7 @@ async function getData() {
                 subList = []
             }
         })
-            return actorListByName
+        return actorListByName
     }
     else {
         throw new Error("Error")
